@@ -8,22 +8,24 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name="t_student")
+@Table(name = "t_student")
 public class Student {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank(message = "Please provide first name!")//null,empty,blank("   ") kabul etmez
+    @NotBlank(message = "Please provide first name!")//null,empty,blank("      ") olmasın
     private String firstName;
 
-    @NotEmpty(message = "Please provide last name!") //null olmasın, empty("") olmasın
+    @NotEmpty(message = "Please provide last name!")//null,empty("") olmasın
     private String lastName;
 
-    @NotNull(message = "Please provide grade!") //grade değeri null olduğunda bu mesajı verir
+    @NotNull(message = "Please provide grade!")//grade null olmasın
     private Integer grade;
-
     private LocalDateTime createDate=LocalDateTime.now();
+
+    //getter-setter
 
 
     public Long getId() {
@@ -50,11 +52,11 @@ public class Student {
         this.lastName = lastName;
     }
 
-    public int getGrade() {
+    public Integer getGrade() {
         return grade;
     }
 
-    public void setGrade(int grade) {
+    public void setGrade(Integer grade) {
         this.grade = grade;
     }
 
